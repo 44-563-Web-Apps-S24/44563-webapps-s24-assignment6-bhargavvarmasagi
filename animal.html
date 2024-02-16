@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animal html</title>
+</head>
+ 
+<body>
+<h1>Animal game by Venkata Srinivasa Bhargav Varma Sagi</h1>
+
+<h2>Getting input</h2>
+
+<form>
+    <label for="pswd">The hidden animal type </label>
+    <input type ="password" id="pswd" name="pswd" value="Chicken"> <br>
+
+    <label for="animalGuess">Guess the animal </label>
+    <input type ="text" id="animalGuess" name="animalGuess"> <br>
+
+    <input type="button" onclick="checkAnimal()" value="Check the guess">
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<script> 
+let wrong=0
+let correct=0
+
+function checkAnimal(){
+    
+    let animalHidden = document.getElementById("pswd").value;
+    let animalGuess= document.getElementById("animalGuess").value;
+    
+    if(animalGuess.toLowerCase()===animalHidden.toLowerCase()){
+        correct++;
+        alert("Ruff ruff")
+    }
+    else{
+        wrong++;
+        alert("Grrrr")
+    }
+    document.getElementById("result").innerHTML=`Wrong = ${wrong} & Correct = ${correct}`;
+}
+</script>
+
+</body>
+</html> 
