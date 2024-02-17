@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Packing HTML</title>
+</head>
+ 
+<body>
+<h1>Venkata Srinivasa Bhargav Varma Sagi packs for a trip</h1>
+
+<form>
+    <input type="checkbox" id="packid" name="packname"   
+      value="True">
+    <label for="cb1_cheese">Pack light</label></br>
+  
+    <input type="checkbox" id="carryid" name="carryname" 
+       value="True">
+    <label for="cb1_olive">Carry on</label></br>
+  
+    <input type="checkbox" id="tabletid" name="tabletname"   
+       value="False">
+    <label for="cb1_onion">Tablet</label></br>
+
+    <input type="button" onclick="selectPack()" value="Select for packing">
+  </form>
+
+
+<p id="resultFour">This text will be replaced </p>
+
+<script> 
+let my_pack={};
+function selectPack(){
+    my_pack={};
+    my_pack.light=document.getElementById("packid").checked;
+    my_pack.carry=document.getElementById("carryid").checked;
+    my_pack.tablet=document.getElementById("tabletid").checked;
+    document.getElementById("resultFour").innerHTML=JSON.stringify(my_pack);
+}
+</script>
+
+</body>
+</html> 

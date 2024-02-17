@@ -11,7 +11,6 @@
 <body>
 
     <h1>Venkata Srinivasa Bhargav Varma Sagi discount calculations</h1>
-    <h2>Getting input</h2>
     
     <form>
         <label for="price">Enter price per </label>
@@ -25,8 +24,23 @@
     
         <input type="button" onclick="discount()" value="Show total">
     </form>
-    
     <p id="resultTwo"> </p>
+
+    <form>
+        <input type="radio" id="sumid" name="sumname" value="sum" onclick="chooseOp()">
+        <label for="sumid">sum</label></br>
+      
+        <input type="radio" id="multiplyid" name="multiplyname" 
+           value="multiply" onclick="chooseOp()">
+        <label for="multiplyid">mult</label></br>
+      
+        <input type="radio" id="exponentid" name="exponentname"   
+           value="exponent" onclick="chooseOp()">
+        <label for="exponentid">exp</label></br>
+    </form>
+    
+    <p id="resultThree">This text will be replaced </p>
+
     
     <script> 
     function discount(){
@@ -40,6 +54,25 @@
             myOutput+=`${discountPercent}% is ${totalCost.toFixed(1)}; `;
         }
         document.getElementById("resultTwo").innerHTML="Totals are: "+myOutput;
+    }
+
+    function chooseOp(){
+        let inputPrice=parseFloat(document.getElementById("price").value);
+        let inputDiscount=parseFloat(document.getElementById("discountPer").value);
+        let op;
+
+        if(document.getElementById("sumid").checked){
+            op=`Sum of ${inputPrice} and ${inputDiscount} is ${inputPrice+inputDiscount}`;
+            document.getElementById("resultThree").innerHTML=op;
+        }
+        else if(document.getElementById("multiplyid").checked){
+            op=`Product of ${inputPrice} and ${inputDiscount} is ${inputPrice*inputDiscount}`;
+            document.getElementById("resultThree").innerHTML=op;
+        }
+        else if(document.getElementById("exponentid").checked){
+            op=`Exponent of ${inputPrice} to the power of ${inputDiscount} is ${Math.pow(inputPrice, inputDiscount)}`;
+            document.getElementById("resultThree").innerHTML=op;
+        }
     }
     </script>
 </body>
