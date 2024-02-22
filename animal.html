@@ -1,75 +1,82 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Animal html</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
- 
+
 <body>
-<h1>Animal game by Venkata Srinivasa Bhargav Varma Sagi</h1>
+    <h1>Animal game by Venkata Srinivasa Bhargav Varma Sagi</h1>
 
-<form>
-    <label for="pswd">The hidden animal type </label>
-    <input type ="password" id="pswd" name="pswd" value="Chicken"> <br><br>
+    <form id="formOne">
+        <label for="pswd">The hidden animal type </label>
+        <input type="password" id="pswd" name="pswd" value="Chicken"> <br><br>
 
-    <label for="animalGuess">Guess the animal </label>
-    <input type ="text" id="animalGuess" name="animalGuess"> <br><br>
+        <label for="animalGuess">Guess the animal </label>
+        <input type="text" id="animalGuess" name="animalGuess"> <br><br>
 
-    <input type="button" id="btn1" onclick="checkAnimal()" value="Check the guess">
-</form>
+        <button type="button" class="btn btn-primary" onclick="checkAnimal()">Check the guess</button>
+    </form>
 
 
-<p id="resultOne">This text will be replaced </p>
-<div>
-    <img src="sharbat.jpg" height="150px" width="150px" alt="sharbat" onclick="selectImage()">
-</div>
+    <p id="resultOne">This text will be replaced </p>
+    <div>
+        <img src="sharbat.jpg" height="150px" width="150px" alt="sharbat" onclick="selectImage()">
+    </div>
+    <div class="alert alert-success mt-3" id="guesses" style="display: none;" role="alert">
+        Sorry, too many wrong guesses
+    </div>
 
-<script> 
-let wrong=0
-let correct=0
+    <script>
+        let wrong = 0
+        let correct = 0
 
-function checkAnimal(){
-    
-    let animalHidden = document.getElementById("pswd").value;
-    let animalGuess= document.getElementById("animalGuess").value;
-    
-    if(animalGuess.toLowerCase()===animalHidden.toLowerCase()){
-        correct++;
-        alert("Ruff ruff")
-    }
-    else{
-        wrong++;
-        alert("Grrrr")
-    }
-    // if(wrong > correct){
-    //     document.getElementById("btn1").onclick="displayGuess()";
-    // }
-    document.getElementById("resultOne").innerHTML=`Wrong = ${wrong} & Correct = ${correct}`;
-}
-// function displayGuess(){
-//     alert("Sorry, too many wrong guesses.");
-    
-// }
+        function checkAnimal() {
 
-let useImage=1
-function selectImage(){
-    switch(useImage){
-        case 1:
-            document.getElementById("drink").src="appyFizz.jpg";
-            useImage=2;
-            break;
-        case 2:
-            document.getElementById("drink").src="greenTea.jpg";
-            useImage=3;
-            break;
-        case 3:
-            document.getElementById("drink").src="sharbat.jpg";
-            useImage=1;
-            break;
-        default:
-            break;
-    }
-}
-</script>
+            let animalHidden = document.getElementById("pswd").value;
+            let animalGuess = document.getElementById("animalGuess").value;
+
+            if (animalGuess.toLowerCase() === animalHidden.toLowerCase()) {
+                correct++;
+                alert("Ruff ruff");
+            }
+            else {
+                wrong++;
+                alert("Grrrr");
+
+            }
+            document.getElementById("resultOne").textContent = `Wrong = ${wrong} & Correct = ${correct}`;
+
+            if (wrong > correct) {
+               document.querySelector('button').setAttribute('disabled','disabled');
+               alert('Sorry, too many wrong guesses.')
+
+            }
+        }
+        
+
+        let useImage = 1
+        function selectImage() {
+            switch (useImage) {
+                case 1:
+                    document.getElementById("drink").src = "appyFizz.jpg";
+                    useImage = 2;
+                    break;
+                case 2:
+                    document.getElementById("drink").src = "greenTea.jpg";
+                    useImage = 3;
+                    break;
+                case 3:
+                    document.getElementById("drink").src = "sharbat.jpg";
+                    useImage = 1;
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
 
 </body>
-</html> 
+
+</html>
